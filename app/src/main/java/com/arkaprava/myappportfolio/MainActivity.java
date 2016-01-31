@@ -3,13 +3,13 @@ package com.arkaprava.myappportfolio;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.content.Context;
 import android.widget.Button;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +17,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        context = getApplicationContext();
+        ButterKnife.bind(this);
     }
 
-    public void openApp(View view) {
-        Button clicked = (Button) view;
-        CharSequence text = "This button will launch my " + clicked.getText() + " app!";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
+    @OnClick({
+            R.id.app1,
+            R.id.app2,
+            R.id.app3,
+            R.id.app4,
+            R.id.app5
+    })
+    public void openApp(Button clicked) {
+        String formattedToastString = String.format(getString(R.string.launch_app_toast), clicked.getText());
+        Toast.makeText(this, formattedToastString, Toast.LENGTH_SHORT).show();
     }
 }

@@ -10,4 +10,5 @@
     <dimen name="margin_top">16dp</dimen>
     <dimen name="button_margin_top">10dp</dimen>
     <dimen name="app_text_size">30sp</dimen>
+    <dimen name="margin">10dp</dimen>
 </resources>
